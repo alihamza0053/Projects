@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#12182e"
+    android:gravity="center"
+    android:padding="50dp"
+    android:orientation="horizontal"
+    tools:context=".result">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/congrats"
+            android:scaleType="fitXY"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reslut"
+            android:textColor="#28be69"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/regardsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excellent"
+            android:textColor="#FFFF00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/regardsText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regards"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:padding="5dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thanks!"
+            android:textColor="#AA336A"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Ali Hamza"
+            android:textColor="#909090"
+            android:textSize="5dp" />
+    </LinearLayout>
+
+</LinearLayout>
