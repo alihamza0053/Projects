@@ -1,19 +1,15 @@
 package com.quiz.app.ah
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
-import kotlin.time.Duration.Companion.microseconds
-import kotlin.time.Duration.Companion.seconds
+
 
 class quiz : AppCompatActivity() {
     //declaring variables
@@ -33,10 +29,13 @@ class quiz : AppCompatActivity() {
 
     //name variable store the name of user which he added at start screen
     lateinit var name: String
+
     //optionCheck variable for string the selected option to check is it correct or wrong
     var optionCheck = ""
+
     //totalQuestions variable count the questions
     var totalQuestions = 0
+
     //sum variable show the total sum of correct answers
     var sum = 0
 
