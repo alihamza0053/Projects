@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No rules! just select one option for each question.\nYou will have only 60 seconds to complete the test.\nTo start enter your name!"
+        android:text="No rules! just select one option for each question.\nYou will have only 100 seconds to complete the test.\nNo move back when you moved to the next question.\nTo start enter your name!"
         android:textColor="#909090"
         android:textSize="16sp"
         android:textStyle="italic" />
@@ -34,6 +34,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:maxLines="1"
         android:textColor="@color/white"
         android:textColorHint="#909090" />
 

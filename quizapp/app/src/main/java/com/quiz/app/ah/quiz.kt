@@ -16,6 +16,7 @@ import kotlin.time.Duration.Companion.microseconds
 import kotlin.time.Duration.Companion.seconds
 
 class quiz : AppCompatActivity() {
+    //declaring variables
     lateinit var timer: CountDownTimer
     lateinit var questionsText: TextView
     lateinit var option1Text: TextView
@@ -29,11 +30,17 @@ class quiz : AppCompatActivity() {
     lateinit var secondOption: LinearLayout
     lateinit var thireOption: LinearLayout
     lateinit var fourthOption: LinearLayout
+
+    //name variable store the name of user which he added at start screen
     lateinit var name: String
+    //optionCheck variable for string the selected option to check is it correct or wrong
     var optionCheck = ""
+    //totalQuestions variable count the questions
     var totalQuestions = 0
+    //sum variable show the total sum of correct answers
     var sum = 0
 
+    //array of questions, options and correct answers
     var questions = arrayOf(
         "1. Who is the father of Computers?",
         "2. What is the full form of CPU?",
@@ -92,11 +99,14 @@ class quiz : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
+
+        //getting name string from the start screen
         val intentName = getIntent()
         name = intentName.getStringExtra("name")!!.toString()
-        Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Welcome " + name, Toast.LENGTH_SHORT).show()
 
 
+        //getting views form xml by using id
         questionsText = findViewById(R.id.questionText)
         option1Text = findViewById(R.id.option1Text)
         option2Text = findViewById(R.id.option2Text)
@@ -110,13 +120,15 @@ class quiz : AppCompatActivity() {
         thireOption = findViewById(R.id.thirdOptionId)
         fourthOption = findViewById(R.id.fourthOptionId)
 
-        //setting time for 60 seconds
-        timer = object : CountDownTimer(60000, 1) {
+        //setting time for 100 seconds
+        timer = object : CountDownTimer(100000, 1) {
             override fun onTick(millisUntilFinished: Long) {
                 quizTimeText.text = "Time: " + (millisUntilFinished / 1000).toString() + "s"
             }
 
             override fun onFinish() {
+
+                //if time finish the quiz will automatically end.
                 Toast.makeText(this@quiz, "Times end!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@quiz, result::class.java)
                 intent.putExtra("result", sum.toString())
@@ -128,15 +140,15 @@ class quiz : AppCompatActivity() {
         timer.start()
 
 
-        //setting first question on start
+        //setting first question on app start
         questionsText.text = questions[0]
         option1Text.text = option1[0]
         option2Text.text = option2[0]
         option3Text.text = option3[0]
         option4Text.text = option4[0]
 
-        //option selection start
-        //first option
+        //option selection onClickListener start
+        //first option layout
         firstOption.setOnClickListener(View.OnClickListener() {
             firstOption.setBackgroundResource(R.drawable.selected_option_shape)
             secondOption.setBackgroundResource(R.drawable.option_shape)
@@ -144,7 +156,7 @@ class quiz : AppCompatActivity() {
             fourthOption.setBackgroundResource(R.drawable.option_shape)
             optionCheck = option1Text.text.toString()
         })
-        //second option
+        //second option layout
         secondOption.setOnClickListener(View.OnClickListener() {
             firstOption.setBackgroundResource(R.drawable.option_shape)
             secondOption.setBackgroundResource(R.drawable.selected_option_shape)
@@ -152,7 +164,7 @@ class quiz : AppCompatActivity() {
             fourthOption.setBackgroundResource(R.drawable.option_shape)
             optionCheck = option2Text.text.toString()
         })
-        //third option
+        //third option layout
         thireOption.setOnClickListener(View.OnClickListener() {
             firstOption.setBackgroundResource(R.drawable.option_shape)
             secondOption.setBackgroundResource(R.drawable.option_shape)
@@ -160,7 +172,7 @@ class quiz : AppCompatActivity() {
             fourthOption.setBackgroundResource(R.drawable.option_shape)
             optionCheck = option3Text.text.toString()
         })
-        //fourth option
+        //fourth option layout
         fourthOption.setOnClickListener(View.OnClickListener() {
             firstOption.setBackgroundResource(R.drawable.option_shape)
             secondOption.setBackgroundResource(R.drawable.option_shape)
@@ -168,25 +180,29 @@ class quiz : AppCompatActivity() {
             fourthOption.setBackgroundResource(R.drawable.selected_option_shape)
             optionCheck = option4Text.text.toString()
         })
-        //option selection end
-
+        //option selection onClickListener end
     }
 
 
+    //button function for next option and submition
     fun submitBtn(view: View) {
-
         if (optionCheck != "") {
-
             firstOption.setBackgroundResource(R.drawable.option_shape)
             secondOption.setBackgroundResource(R.drawable.option_shape)
             thireOption.setBackgroundResource(R.drawable.option_shape)
             fourthOption.setBackgroundResource(R.drawable.option_shape)
             if (optionCheck == answers[totalQuestions]) {
+
+                //if answers correct 1 point added
                 sum++
             }
-
+            //making empty the answers variable
             optionCheck = ""
+
+            //counting the questions
             totalQuestions++
+
+            //setting next questions and options
             when (totalQuestions) {
                 1 -> {
                     questionsText.text = questions[1]
@@ -245,6 +261,7 @@ class quiz : AppCompatActivity() {
 
                 }
 
+                //finishing the testing at the end of questions
                 else -> {
                     timer.cancel()
                     Toast.makeText(this, sum.toString(), Toast.LENGTH_SHORT).show()
@@ -257,6 +274,7 @@ class quiz : AppCompatActivity() {
                 }
             }
         } else {
+            //in case of no option select by user
             Toast.makeText(this, "Select an option first.", Toast.LENGTH_SHORT).show()
         }
     }
