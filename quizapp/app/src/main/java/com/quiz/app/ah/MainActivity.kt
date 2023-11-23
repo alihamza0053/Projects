@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var name: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
         //getting view form xml by using id
         name = findViewById(R.id.nameText)
     }
